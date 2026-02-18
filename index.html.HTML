@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=filter_alt" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <title>Panneau de communication</title>
+  <style>
+
+    body {
+      
+      font-family: "Lexend", sans-serif;
+      color: rgb(30, 35, 85);
+      text-align: center;
+      background:linear-gradient(to right,#e0f8ff,transparent);
+      
+     
+    }
+
+  .Entête {
+    background:linear-gradient(to right,#a3e9ff,transparent);
+    margin-top: 0%;    
+    position:relative
+    
+    
+    
+  }
+
+   
+    h1 {
+      color: rgb(30, 35, 85);
+      font-family:'Lexend', sans-serif ;
+      text-align: center;
+    
+  
+    
+      
+      
+    }
+
+    h2 {
+        font-family: 'Lexend', sans-serif;
+        color: rgb(30, 35, 85);
+        text-align: center;
+       
+        
+    }
+
+    p {
+      text-align:center;
+    }
+    textarea {
+      width: 30%;
+      height: 80px;
+      border-radius: 10px;
+      border:none;
+      display:inline-flexbox;      
+      resize: none;
+      font-family: 'Lexend', sans-serif;
+    }
+    #resultat {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: white;
+      border-radius: 10px;
+      font-size: 20px;
+      border: 1px solid #ccc;
+      color: rgb(31, 21, 75);
+     
+      
+    }
+
+  
+    .message {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed #97e2ff;
+      font-family: 'Lexend', sans-serif;    
+      animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+      
+    
+    .Categories button {
+      margin: 5px;
+      padding: 8px;
+      font-family: 'Lexend', sans-serif;
+      cursor: pointer;
+      background-color: rgb(229, 247, 255);
+      border-radius: 12px;
+      border-color: rgb(239, 179, 245);
+      
+    }
+
+.Filtres {
+  position:relative;
+ margin-right:80%;
+ padding-top: 2px;
+ border-radius:5%;
+ color:rgb(146, 171, 224);
+ 
+ 
+
+
+
+}
+
+    select  {
+    margin: 2px;
+      padding: 4px;
+      font-family: 'Lexend', sans-serif;
+      cursor: pointer;
+      background-color: rgb(229, 247, 255);
+      border-radius: 10px;
+      border-color: rgb(227, 107, 238);
+     border : none;
+     
+    }
+
+    
+    .selected {
+      background-color: #b2f7ef;
+    }
+
+    button {
+        background-color: rgb(229, 247, 255);
+        border-radius: 10px;
+        border-color: rgb(211, 174, 226);
+        border: none ;
+    }
+
+    button:hover {
+        background-color: rgb(146, 177, 233);
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+
+    #texte {
+        color: rgb(56, 29, 56);
+      box-shadow: 0 3px 10px rgba(0, 68, 255, 0.2);
+}
+
+     
+
+    .message {
+        font-family: 'Lexend', sans-serif;
+        font-weight: 400;
+    }
+
+    .message button {
+  background-color: rgb(250, 214, 239);
+  border: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Lexend', sans-serif;
+  box-shadow: 0 3px 10px rgba(0, 68, 255, 0.2);
+}
+
+.message button:hover {
+  background-color: rgb(255, 100, 100);
+}
+
+.message-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  text-align: left;
+}
+
+.message-meta {
+  text-align: left;
+  min-width: 120px;
+  font-size: 12px;
+}
+
+.message-meta button {
+  margin-top: 5px;
+  display: block;
+}
+
+.message-content {
+  flex: 1;
+}
+
+i {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+  background: none;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="Entête">
+  
+    <h1>Pop-up</h1>
+
+    <label for="texte"></label><br />
+    <textarea id="texte" placeholder="Ecrire un message..."></textarea><br />
+    <br>
+
+    <div class="Categories">
+      <h2>Ce sujet concerne :</h2>
+      <button onclick="choisirCategorie('Jardin')">Jardin</button>
+      <button onclick="choisirCategorie('Accueil')">Accueil</button>
+      <button onclick="choisirCategorie('Enseignement')">Enseignement</button>
+      <button onclick="choisirCategorie('Gestion')">Gestion</button>
+    </div>
+
+    <p id="categorieChoisie" style="margin-top: 10px; font-weight: bold;"></p>
+
+    <div class="Signer">
+      <h3>Qui écrit ce message ?  </h3>
+      <select id="signatureSelect" >
+        <option value="">-- Choisir --</option>
+        <option value="Christelle">Christelle</option>
+        <option value="Cyprien">Cyprien</option>
+        <option value="Isa">Isa</option>
+        <option value="Karine">Karine</option>
+        <option value="Laure">Laure</option>
+        <option value="Manon">Manon</option>
+        <option value="Michelle">Michelle</option>
+      </select> <button onclick="publier()">
+        <i data-lucide="send"></i>
+        
+      </button>
+      
+      
+  </div>
+
+
+
+    <div class="Filtres">
+      <p>Filtrer les messages</p>
+      <select onchange="filtrerParCategorie(this.value)">
+        <option value="TOUS">Tous</option>
+        <option value="Jardin">Jardin</option>
+        <option value="Accueil">Accueil</option>
+        <option value="Enseignement">Enseignement</option>
+        <option value="Gestion">Gestion</option>
+      </select>
+      
+    </div><br>
+
+   
+  
+    
+    
+<div class="Charte">Lorsqu'un sujet est résolu, n'hésite pas à le supprimer pour fluidifier le trafic !🌻​</div>
+    <div id="resultat"></div>
+    <p>  <button onclick="supprimerMessages()">Tout supprimer</button></p>
+ 
+
+  </div>
+
+  <script>
+    let categorieSelectionnee = "";
+    let messages = [];
+
+   
+    
+    // Catégorie
+    function choisirCategorie(categorie) {
+      categorieSelectionnee = categorie;
+    
+  
+    
+      const boutons = document.querySelectorAll(".Categories button");
+      boutons.forEach((btn) => {
+        btn.classList.remove("selected");
+        if (btn.textContent === categorie) {
+          btn.classList.add("selected");
+        }
+      });
+    }
+    
+   
+    function publier() {
+  const texte = document.getElementById("texte").value.trim();
+  const signature = document.getElementById("signatureSelect").value;
+
+  if (texte === "") {
+    alert("Oups ! Tu n'as pas encore rédigé de message !");
+    return;
+  }
+
+  if (categorieSelectionnee === "") {
+    alert("N'oublie pas de sélectionner une catégorie 🤭");
+    return;
+  }
+
+  if (signature === "") {
+    alert("N'oublie pas de signer ton message ✍️");
+    return;
+  }
+
+  const nouveauMessage = {
+    id: Date.now(), // ✅ ID unique
+    texte: texte,
+    categorie: categorieSelectionnee,
+    signature: signature,
+    date: new Date().toLocaleString()
+  };
+
+  messages.push(nouveauMessage);
+  localStorage.setItem("messages", JSON.stringify(messages));
+  afficherMessages(messages);
+
+  document.getElementById("texte").value = "";
+}
+
+    // Affichage
+    function afficherMessages(messagesAAfficher) {
+      const resultat = document.getElementById("resultat");
+      resultat.innerHTML = "";
+    
+      if (messagesAAfficher.length === 0) {
+        resultat.innerHTML =
+          "<small>Il n'y a pas encore de message au tableau. Reviens plus tard !</small>";
+        return;
+      }
+    
+      for (let i = messagesAAfficher.length - 1; i >= 0; i--) {
+        const msg = messagesAAfficher[i];
+        const indexGlobal = messages.indexOf(msg);
+    
+        resultat.innerHTML += `
+          <div class="message">
+            <div class="message-header">
+              <div class="message-meta">
+                <p>📅 ${msg.date}</p>
+                <p>✍️ ${msg.signature}</p>
+                <button onclick="supprimerMessage(${indexGlobal})">Traité</button>
+              </div>
+              <div class="message-content">
+                <strong>${msg.categorie}</strong><br>
+                ${msg.texte}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+    
+    // Suppression unique
+    function supprimerMessage(index) {
+      if (confirm("Veux-tu supprimer ce message ?")) {
+        messages.splice(index, 1);
+        localStorage.setItem("messages", JSON.stringify(messages));
+        afficherMessages(messages);
+      }
+    }
+    
+    // Suppression totale
+    function supprimerMessages() {
+      if (confirm("Es-tu sûre de vouloir supprimer tous les messages ?")) {
+        messages = [];
+        localStorage.removeItem("messages");
+        afficherMessages(messages);
+      }
+    }
+    
+    // Filtres
+    function filtrerParCategorie(categorie) {
+      if (categorie === "TOUS") {
+        afficherMessages(messages);
+      } else {
+        afficherMessages(messages.filter(m => m.categorie === categorie));
+      }
+    }
+    
+    // Chargement
+    window.onload = function () {
+      messages = JSON.parse(localStorage.getItem("messages")) || [];
+      afficherMessages(messages);
+    };
+
+   
+  lucide.createIcons();
+
+
+    </script>
+    
+</body>
+</html>
